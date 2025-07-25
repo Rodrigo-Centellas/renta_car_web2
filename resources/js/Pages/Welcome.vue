@@ -10,9 +10,6 @@ const props = defineProps({
 })
 
 const { theme, setTheme, fontSize, setFontSize, contrast, setContrast } = useTheme()
-
-// URLs base para las rutas manuales
-const baseUrl = 'https://mail.tecnoweb.org.bo/inf513/grupo20sa/proyecto2/renta_car_web2/public'
 </script>
 
 <template>
@@ -63,18 +60,18 @@ const baseUrl = 'https://mail.tecnoweb.org.bo/inf513/grupo20sa/proyecto2/renta_c
         <!-- Botones de autenticación -->
         <div class="flex items-center space-x-2">
           <template v-if="canLogin">
-            <a :href="`${baseUrl}/login`"
-               class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium shadow-md hover:shadow-lg"
-               style="font-size: calc(1em - 0.125rem);">
+            <Link href="/login"
+                  class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium shadow-md hover:shadow-lg"
+                  style="font-size: calc(1em - 0.125rem);">
               Iniciar Sesión
-            </a>
+            </Link>
           </template>
           <template v-if="canRegister">
-            <a :href="`${baseUrl}/register`"
-               class="px-4 py-2 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors font-medium"
-               style="font-size: calc(1em - 0.125rem);">
+            <Link href="/register"
+                  class="px-4 py-2 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors font-medium"
+                  style="font-size: calc(1em - 0.125rem);">
               Registrarse
-            </a>
+            </Link>
           </template>
         </div>
       </div>
@@ -139,16 +136,16 @@ const baseUrl = 'https://mail.tecnoweb.org.bo/inf513/grupo20sa/proyecto2/renta_c
 
       <!-- Botones de acción -->
       <div class="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-        <a :href="`${baseUrl}/vehiculos/show`"
-           class="px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium shadow-lg hover:shadow-xl"
-           style="font-size: inherit;">
+        <Link href="/vehiculos"
+              class="px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium shadow-lg hover:shadow-xl"
+              style="font-size: inherit;">
           Ver Flota de Vehículos
-        </a>
-        <a :href="`${baseUrl}/login`"
-           class="px-8 py-3 border-2 border-green-600 text-green-600 rounded-lg hover:bg-green-50 transition-colors font-medium"
-           style="font-size: inherit;">
+        </Link>
+        <Link href="/login"
+              class="px-8 py-3 border-2 border-green-600 text-green-600 rounded-lg hover:bg-green-50 transition-colors font-medium"
+              style="font-size: inherit;">
           Acceder al Sistema
-        </a>
+        </Link>
       </div>
     </section>
 
