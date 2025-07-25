@@ -2,6 +2,8 @@
 import { Head, useForm, Link } from '@inertiajs/vue3'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 
+
+const baseUrl = 'http://mail.tecnoweb.org.bo/inf513/grupo20sa/proyecto2/renta_car_web2/public';
 const props = defineProps({
   clausula: {
     type: Object,
@@ -15,7 +17,7 @@ const form = useForm({
 })
 
 const submit = () => {
-  form.put(route('clausulas.update', props.clausula.id))
+  form.put(route('${baseUrl}/clausulas.update', props.clausula.id))
 }
 </script>
 
@@ -87,7 +89,7 @@ const submit = () => {
               Actualizar
             </button>
             <Link
-              :href="route('clausulas.index')"
+              :href="route('${baseUrl}/clausulas.index')"
               class="self-center text-sm underline opacity-80 hover:opacity-100"
             >
               Cancelar

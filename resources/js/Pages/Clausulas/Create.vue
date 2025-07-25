@@ -2,13 +2,16 @@
 import { Head, useForm, Link } from '@inertiajs/vue3'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 
+
+const baseUrl = 'http://mail.tecnoweb.org.bo/inf513/grupo20sa/proyecto2/renta_car_web2/public';
+
 const form = useForm({
   descripcion: '',
   activa: 1, // por defecto activa = true
 })
 
 const submit = () => {
-  form.post(route('clausulas.store'))
+  form.post(route('${baseUrl}/}clausulas.store'))
 }
 </script>
 
