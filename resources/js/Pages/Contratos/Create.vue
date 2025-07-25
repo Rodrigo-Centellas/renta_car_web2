@@ -135,20 +135,20 @@ const enviar = () => {
     return;
   }
 
-  form.post('${baseUrl}/contratos', {
-    onSuccess: () => {
-      Swal.fire({
-        title: '¡Contrato creado exitosamente!',
-        text: 'Se ha generado el pago de garantía. Proceda al área de pagos.',
-        icon: 'success',
-        confirmButtonColor: '#10B981'
-      }).then(() => window.location.href = `${baseUrl}/contratos`);
-    },
-    onError: (errors) => {
-      console.log('Errores:', errors);
-      Swal.fire('Error', 'Ocurrió un error al crear el contrato. Revise los datos.', 'error');
-    },
-  });
+form.post(`${baseUrl}/contratos`, {
+  onSuccess: () => {
+    Swal.fire({
+      title: '¡Contrato creado exitosamente!',
+      text: 'Se ha generado el pago de garantía. Proceda al área de pagos.',
+      icon: 'success',
+      confirmButtonColor: '#10B981'
+    }).then(() => window.location.href = `${baseUrl}/contratos`);
+  },
+  onError: (errors) => {
+    console.log('Errores:', errors);
+    Swal.fire('Error', 'Ocurrió un error al crear el contrato. Revise los datos.', 'error');
+  },
+});
 };
 
 const steps = [
