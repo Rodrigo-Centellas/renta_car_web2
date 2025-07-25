@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://mail.tecnoweb.org.bo/inf513/grupo20sa/proyecto2/renta_car_web2/public'),
     'asset_url' => env('ASSET_URL', env('APP_URL')),
 
     /*

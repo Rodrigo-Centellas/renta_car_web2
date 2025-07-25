@@ -20,7 +20,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Vite::prefetch(concurrency: 3);
+        // Vite::prefetch(concurrency: 3);
+                if (config('app.env') === 'production') {
+            URL::forceScheme('https');
+        }
+        
+        // Configurar la URL base para subdirectorios
+        URL::forceRootUrl(config('app.url'));
         
     }
 }
