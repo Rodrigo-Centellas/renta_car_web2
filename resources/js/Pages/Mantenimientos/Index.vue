@@ -3,7 +3,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import Swal from 'sweetalert2';
 import { ref, watch } from 'vue';
-
+const baseUrl = 'http://mail.tecnoweb.org.bo/inf513/grupo20sa/proyecto2/renta_car_web2/public';
 const props = defineProps({
   mantenimientos: Array,
   filters: Object,
@@ -12,7 +12,7 @@ const props = defineProps({
 const search = ref(props.filters?.search || '');
 
 watch(search, val => {
-  router.get('/mantenimientos', { search: val }, { preserveState: true, replace: true });
+  router.get(`${baseUrl}/mantenimientos`, { search: val }, { preserveState: true, replace: true });
 });
 
 const eliminar = id => {
@@ -58,13 +58,13 @@ const eliminar = id => {
             >
               Lista de Mantenimientos
             </h1>
-            <Link
-              href="/mantenimientos/create"
+            <a
+              :href="`${baseUrl}/mantenimientos/create`"
               class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium shadow-md transition-colors"
               style="font-size: calc(1em - 0.075rem);"
             >
               Nuevo
-            </Link>
+          </a>
           </div>
 
           <form @submit.prevent="$event.preventDefault();" class="flex gap-4 max-w-md mb-6">
@@ -105,13 +105,13 @@ const eliminar = id => {
                   <td class="px-4 py-3 border" style="font-size: inherit;">{{ m.descripcion }}</td>
                   <td class="px-4 py-3 border">
                     <div class="flex flex-wrap gap-3">
-                      <Link
-                        :href="`/mantenimientos/${m.id}/edit`"
+                      <a
+                        :href="`${baseUrl}/mantenimientos/${m.id}/edit`"
                         class="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 font-medium transition-colors"
                         style="font-size: calc(1em - 0.075rem);"
                       >
                         Editar
-                      </Link>
+                    </a>
                       <button
                         @click="eliminar(m.id)"
                         class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 font-medium transition-colors"

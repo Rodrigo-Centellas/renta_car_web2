@@ -2,7 +2,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, router, Link } from '@inertiajs/vue3';
 import Swal from 'sweetalert2';
-
+const baseUrl = 'http://mail.tecnoweb.org.bo/inf513/grupo20sa/proyecto2/renta_car_web2/public';
 const props = defineProps({ clausulas: Array });
 const eliminar = id => {
   Swal.fire({
@@ -29,10 +29,10 @@ const eliminar = id => {
       <div class="card-bg p-6 rounded-2xl shadow-lg">
         <div class="flex justify-between items-center mb-6">
           <h1 class="font-bold" style="font-size:calc(1em+0.5rem)">Listado de Cláusulas</h1>
-          <Link href="/clausulas/create" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 shadow-md"
+          <a :href="`${baseUrl}/clausulas/create`" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 shadow-md"
             style="font-size:inherit">
           Nueva Cláusula
-          </Link>
+        </a>
         </div>
 
         <div class="overflow-x-auto">
@@ -52,10 +52,10 @@ const eliminar = id => {
                 <td class="border px-6 py-4">{{ cl.activa }}</td>
                 <td class="border px-6 py-4">
                   <div class="flex items-center space-x-4">
-                    <Link :href="route('clausulas.edit', cl.id)" class="text-blue-400 hover:underline"
+                    <a :href="`${baseUrl}/clausulas/${cl.id}/edit`" class="text-blue-400 hover:underline"
                       style="font-size:inherit">
                     Editar
-                    </Link>
+                  </a>
                     <button @click="eliminar(cl.id)" class="text-red-400 hover:underline" style="font-size:inherit">
                       Eliminar
                     </button>

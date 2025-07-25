@@ -3,12 +3,12 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, router } from '@inertiajs/vue3';
 import Swal from 'sweetalert2';
 import { ref } from 'vue';
-
+const baseUrl = 'http://mail.tecnoweb.org.bo/inf513/grupo20sa/proyecto2/renta_car_web2/public';
 const nombre = ref('');
 const descripcion = ref('');
 
 const enviar = () => {
-  router.post('/mantenimientos', {
+  router.post(`${baseUrl}/mantenimientos`, {
     nombre: nombre.value,
     descripcion: descripcion.value,
   }, {
@@ -19,7 +19,7 @@ const enviar = () => {
         icon: 'success',
         confirmButtonText: 'Aceptar',
       }).then(() => {
-        router.visit('/mantenimientos');
+        window.location.href = `${baseUrl}/mantenimientos`;
       });
     },
     onError: () => {
