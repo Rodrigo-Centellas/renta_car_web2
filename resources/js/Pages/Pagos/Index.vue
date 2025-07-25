@@ -33,7 +33,7 @@ const marcarComoPagado = async (pagoId) => {
 };
 
 // URL base para las rutas manuales
-const baseUrl = 'http://mail.tecnoweb.org.bo/inf513/grupo20sa/proyecto2/renta_car_web2/public';
+const baseUrl = 'https://mail.tecnoweb.org.bo/inf513/grupo20sa/proyecto2/renta_car_web2/public';
 const props = defineProps({
   pagos: Array,
   filters: Object,

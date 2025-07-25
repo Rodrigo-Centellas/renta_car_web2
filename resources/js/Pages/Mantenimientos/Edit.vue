@@ -3,7 +3,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, router } from '@inertiajs/vue3';
 import Swal from 'sweetalert2';
 import { ref, watch } from 'vue';
-const baseUrl = 'http://mail.tecnoweb.org.bo/inf513/grupo20sa/proyecto2/renta_car_web2/public';
+const baseUrl = 'https://mail.tecnoweb.org.bo/inf513/grupo20sa/proyecto2/renta_car_web2/public';
 const props = defineProps({
   mantenimiento: Object,
 });

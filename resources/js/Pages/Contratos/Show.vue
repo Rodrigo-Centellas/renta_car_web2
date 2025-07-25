@@ -6,7 +6,7 @@ import { Head, Link } from '@inertiajs/vue3';
 import '../../../css/contrato-print.css';
 
 // URL base para las rutas manuales
-const baseUrl = 'http://mail.tecnoweb.org.bo/inf513/grupo20sa/proyecto2/renta_car_web2/public';
+const baseUrl = 'https://mail.tecnoweb.org.bo/inf513/grupo20sa/proyecto2/renta_car_web2/public';
 const props = defineProps({
   contrato: Object,
   contratoData: Object,
