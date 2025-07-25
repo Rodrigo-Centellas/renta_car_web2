@@ -83,7 +83,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/pagos/{pago}/generar-qr', [PagoController::class, 'generarQR'])->name('pagos.generarQR');
     Route::get('/pagos/{pago}/consultar-estado', [PagoController::class, 'consultarEstado'])->name('pagos.consultarEstado');
     Route::post('/pagos/verificar-pago', [PagoController::class, 'verificarPago'])->name('pagos.verificarPago');
-    
+    Route::post('/pagos/{pago}/marcar-pagado', [PagoController::class, 'marcarComoPagado']);
+
     // Página de confirmación de pago
     Route::get('/pagos/confirmacion', [PagoController::class, 'confirmacion'])->name('pagos.confirmacion');
 

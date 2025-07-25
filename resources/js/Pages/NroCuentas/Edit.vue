@@ -1,7 +1,7 @@
 <script setup>
 import { Head, useForm, Link } from '@inertiajs/vue3'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
-
+const baseUrl = 'http://mail.tecnoweb.org.bo/inf513/grupo20sa/proyecto2/renta_car_web2/public';
 const props = defineProps({
   nroCuenta: Object,
 })
@@ -13,7 +13,7 @@ const form = useForm({
 })
 
 const submit = () =>
-  form.put(route('nro-cuentas.update', props.nroCuenta.id))
+  form.put(route(`${baseUrl}/nro-cuentas.update`, props.nroCuenta.id))
 </script>
 
 <template>
@@ -86,9 +86,9 @@ const submit = () =>
               <button type="submit" class="px-6 py-3 bg-blue-600 text-white rounded-lg">
                 Actualizar
               </button>
-              <Link href="{ route('nro-cuentas.index') }" class="underline">
+              <a :href="`${baseUrl}/nro-cuentas.index`" class="underline">
                 Cancelar
-              </Link>
+              </a>
             </div>
 
           </form>

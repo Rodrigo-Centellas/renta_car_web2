@@ -134,6 +134,48 @@ public function index(Request $request)
     ]);
 }
 
+/**
+ * Marca un pago como 'pagado' vía AJAX desde la interfaz.
+ */
+public function marcarComoPagado(Request $request, $pagoId)
+{
+    try {
+        $pago = Pago::findOrFail($pagoId);
+
+        if ($pago->estado === 'pagado') {
+            return response()->json([
+                'success' => false,
+                'message' => 'Este pago ya está marcado como pagado.'
+            ], 400);
+        }
+
+        $pago->update([
+            'estado' => 'pagado'
+        ]);
+
+        // Opcional: crea una notificación interna
+        Notificacion::create([
+            'user_id' => Auth::id(),
+            'fecha'   => now()->toDateString(),
+            'tipo'    => 'sistema',
+            'mensaje' => "Pago #{$pago->id} marcado como pagado manualmente."
+        ]);
+
+        return response()->json(['success' => true]);
+
+    } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Pago no encontrado.'
+        ], 404);
+    } catch (\Exception $e) {
+        Log::error('Error en marcarComoPagado: '.$e->getMessage());
+        return response()->json([
+            'success' => false,
+            'message' => 'Error al actualizar el estado del pago.'
+        ], 500);
+    }
+}
 
 
 
@@ -595,4 +637,6 @@ public function index(Request $request)
             ]);
         }
     }
+
+    
 }

@@ -88,12 +88,12 @@ const submit = () => {
             >
               Actualizar
             </button>
-            <Link
+            <a
               :href="route('${baseUrl}/clausulas.index')"
               class="self-center text-sm underline opacity-80 hover:opacity-100"
             >
               Cancelar
-            </Link>
+          </a>
           </div>
 
         </form>
