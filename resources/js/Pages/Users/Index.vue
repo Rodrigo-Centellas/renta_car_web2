@@ -131,7 +131,7 @@ const buscar = () => {
                     <div class="flex flex-wrap items-center gap-3">
                       <!-- Ver -->
                       <a
-                        :href="`${baseUrl}/users/${user.id}/edit`"
+                        :href="`${baseUrl}/users/${user.id}/show`"
                         class="inline-flex items-center px-4 py-2 text-xs font-medium bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
                         style="font-size: calc(0.875em);"
                       >
