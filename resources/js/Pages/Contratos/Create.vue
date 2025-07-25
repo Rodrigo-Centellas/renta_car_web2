@@ -6,6 +6,8 @@ import Swal from 'sweetalert2';
 import { useForm } from '@inertiajs/vue3';
 import dayjs from 'dayjs';
 
+const baseUrl = 'http://mail.tecnoweb.org.bo/inf513/grupo20sa/proyecto2/renta_car_web2/public';
+
 const props = defineProps({
   vehiculos: Array,
   frecuencia_pagos: Array,
@@ -133,14 +135,14 @@ const enviar = () => {
     return;
   }
 
-  form.post('/contratos', {
+  form.post('${baseUrl}/contratos', {
     onSuccess: () => {
       Swal.fire({
         title: '¡Contrato creado exitosamente!',
         text: 'Se ha generado el pago de garantía. Proceda al área de pagos.',
         icon: 'success',
         confirmButtonColor: '#10B981'
-      }).then(() => router.visit('/contratos'));
+      }).then(() => window.location.href = `${baseUrl}/contratos`);
     },
     onError: (errors) => {
       console.log('Errores:', errors);
