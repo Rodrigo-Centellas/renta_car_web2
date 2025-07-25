@@ -26,3 +26,17 @@ createInertiaApp({
         color: '#4B5563',
     },
 });
+
+// Configurar Inertia para usar la URL base correcta
+import { router } from '@inertiajs/vue3';
+
+// Obtener la URL base del meta tag
+const baseURL = document.querySelector('meta[name="app-url"]')?.getAttribute('content') || '';
+if (baseURL) {
+    // Configurar interceptor para todas las peticiones de Inertia
+    router.on('before', (event) => {
+        if (event.detail.visit.url.startsWith('/') && !event.detail.visit.url.startsWith(baseURL)) {
+            event.detail.visit.url = baseURL + event.detail.visit.url;
+        }
+    });
+}

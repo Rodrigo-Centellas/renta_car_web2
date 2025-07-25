@@ -22,7 +22,13 @@ use App\Http\Controllers\NotificacionController;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
 use Inertia\Inertia;
+
+// Configurar la URL base para las rutas de Inertia
+if (config('app.url')) {
+    URL::forceRootUrl(config('app.url'));
+}
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
