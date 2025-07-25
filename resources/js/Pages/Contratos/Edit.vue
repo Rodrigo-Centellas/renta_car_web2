@@ -4,6 +4,8 @@ import { Head, router } from '@inertiajs/vue3';
 import { ref, watch } from 'vue';
 import Swal from 'sweetalert2';
 
+// URL base para las rutas manuales
+const baseUrl = 'http://mail.tecnoweb.org.bo/inf513/grupo20sa/proyecto2/renta_car_web2/public';
 const props = defineProps({
   contrato: Object,
   vehiculos: Array,
@@ -61,7 +63,7 @@ const enviar = () => {
 };
 
 const actualizarContrato = () => {
-  router.put(`/contratos/${props.contrato.id}`, {
+  router.put(`${baseUrl}/contratos/${props.contrato.id}`, {
     estado: estado.value,
     fecha_fin: fecha_fin.value, // Solo si realmente es necesario permitir este cambio
   }, {
@@ -69,7 +71,7 @@ const actualizarContrato = () => {
       title: '¡Actualizado!',
       text: 'El contrato ha sido actualizado correctamente.',
       icon: 'success'
-    }).then(() => router.visit('/contratos')),
+    }).then(() => window.location.href = `${baseUrl}/contratos`),
     onError: (errors) => {
       console.error('Errores:', errors);
       Swal.fire('Error', 'Problema al actualizar el contrato.', 'error');
@@ -173,7 +175,7 @@ const obtenerNombreFrecuencia = () => {
             </div>
 
             <div class="flex justify-end space-x-3 pt-4 border-t">
-              <button type="button" @click="router.visit('/contratos')"
+              <button type="button" @click="window.location.href = `${baseUrl}/contratos`"
                 class="px-4 py-2 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 transition duration-200">
                 Cancelar
               </button>

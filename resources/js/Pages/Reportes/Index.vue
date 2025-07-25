@@ -1,6 +1,8 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link } from '@inertiajs/vue3';
+// URL base para las rutas manuales
+const baseUrl = 'http://mail.tecnoweb.org.bo/inf513/grupo20sa/proyecto2/renta_car_web2/public';
 </script>
 
 <template>
@@ -18,21 +20,21 @@ import { Head, Link } from '@inertiajs/vue3';
         <div class="p-8 rounded-lg shadow-lg card-bg">
           <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <!-- Tarjeta: Reporte de Pagos -->
-            <Link
-              href="/reportes/pagos"
-              class="block p-6 bg-white border border-gray-200 rounded-lg shadow card-bg"
-              style="text-decoration: none;"
-            >
-              <h3 class="mb-2 font-bold text-blue-600" style="font-size: calc(1em + 0.25rem);">
-                Reporte de Pagos
-              </h3>
-              <p class="text-main opacity-80" style="font-size: calc(1em - 0.075rem);">
-                Generar informes filtrados de pagos por fechas y usuario chofer.
-              </p>
-            </Link>
+<a
+:href="`${baseUrl}/reportes/pagos`"
+  class="block p-6 bg-white border border-gray-200 rounded-lg shadow card-bg"
+  style="text-decoration: none;"
+>
+  <h3 class="mb-2 font-bold text-blue-600" style="font-size: calc(1em + 0.25rem);">
+    Reporte de Pagos
+  </h3>
+  <p class="text-main opacity-80" style="font-size: calc(1em - 0.075rem);">
+    Generar informes filtrados de pagos por fechas y usuario chofer.
+  </p>
+</a>
 
             <!-- Tarjeta adicional: Ejemplo -->
-            <Link
+            <!-- <Link
               href="/reportes/otro"
               class="block p-6 bg-white border border-gray-200 rounded-lg shadow card-bg"
               style="text-decoration: none;"
@@ -43,7 +45,7 @@ import { Head, Link } from '@inertiajs/vue3';
               <p class="text-main opacity-80" style="font-size: calc(1em - 0.075rem);">
                 Descripción del otro tipo de reporte disponible.
               </p>
-            </Link>
+            </Link> -->
           </div>
         </div>
       </div>

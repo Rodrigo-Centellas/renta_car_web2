@@ -2,7 +2,8 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import { ref } from 'vue';
-
+// URL base para las rutas manuales
+const baseUrl = 'http://mail.tecnoweb.org.bo/inf513/grupo20sa/proyecto2/renta_car_web2/public';
 const props = defineProps({
   usuarios: {
     type: Array,
@@ -48,12 +49,12 @@ const construirParametros = () => {
 
 const exportarPdf = () => {
   const params = construirParametros();
-  window.open(`/reportes/pagos/pdf?${params}`, '_blank');
+  window.open(`${baseUrl}/reportes/pagos/pdf?${params}`, '_blank');
 };
 
 const exportarExcel = () => {
   const params = construirParametros();
-  window.open(`/reportes/pagos/excel?${params}`, '_blank');
+  window.open(`${baseUrl}/reportes/pagos/excel?${params}`, '_blank');
 };
 
 const limpiarFiltros = () => {

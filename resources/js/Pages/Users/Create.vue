@@ -4,6 +4,8 @@ import { Head, router } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import Swal from 'sweetalert2';
 
+
+
 const name = ref('');
 const apellido = ref('');
 const ci = ref('');
@@ -14,6 +16,8 @@ const password = ref('');
 const rolesSeleccionados = ref([]);
 const processing = ref(false);
 
+
+const baseUrl = 'http://mail.tecnoweb.org.bo/inf513/grupo20sa/proyecto2/renta_car_web2/public';
 const props = defineProps({
     roles: Array,
 });
@@ -21,7 +25,7 @@ const props = defineProps({
 const enviar = () => {
     processing.value = true;
     
-    router.post('/users', {
+    router.post('${baseUrl}/users', {
         name: name.value,
         apellido: apellido.value,
         ci: ci.value,
@@ -37,7 +41,7 @@ const enviar = () => {
                 text: 'El usuario ha sido registrado correctamente.',
                 icon: 'success',
             }).then(() => {
-                router.visit('/users');
+                window.location.href = `${baseUrl}/users`
             });
         },
         onFinish: () => {
@@ -260,7 +264,7 @@ const enviar = () => {
                             </button>
                             
                             <a 
-                                href="/users" 
+                                href="${baseUrl}/users" 
                                 class="px-8 py-3 text-white bg-gray-500 rounded-lg hover:bg-gray-600 transition-colors font-medium shadow-md hover:shadow-lg text-center"
                                 style="font-size: inherit;">
                                 Cancelar

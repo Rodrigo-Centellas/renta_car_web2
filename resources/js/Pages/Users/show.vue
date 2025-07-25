@@ -3,6 +3,8 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
+
+const baseUrl = 'http://mail.tecnoweb.org.bo/inf513/grupo20sa/proyecto2/renta_car_web2/public';
 // Props recibidos de Inertia
 const props = defineProps({
   user: Object,
@@ -39,12 +41,12 @@ const closeImage = () => {
       <!-- Header con botón de volver y editar -->
       <div class="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
         <div class="flex items-center space-x-3">
-          <Link href="/users" class="text-main hover:text-main-dark">
+          <a :href="`${baseUrl}/users`" class="text-main hover:text-main-dark">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
-          </Link>
+          </a>
           <div class="p-2 rounded-lg card-bg">
             <svg class="w-6 h-6 text-main" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -57,7 +59,7 @@ const closeImage = () => {
         </div>
 
         <Link
-          :href="`/users/${user.id}/edit`"
+          :href="`${baseUrl}/users/${user.id}/edit`"
           class="flex items-center space-x-2 px-6 py-2 font-medium rounded-lg shadow-md card-bg hover:shadow-lg transition-shadow"
           style="font-size: inherit;"
         >

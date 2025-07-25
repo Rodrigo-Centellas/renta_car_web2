@@ -4,6 +4,7 @@ import { Head, router } from '@inertiajs/vue3';
 import Swal from 'sweetalert2';
 import { ref } from 'vue';
 
+const baseUrl = 'http://mail.tecnoweb.org.bo/inf513/grupo20sa/proyecto2/renta_car_web2/public';
 const props = defineProps({
   roles: Array,
 });
@@ -20,7 +21,7 @@ const eliminar = (id) => {
   }).then((result) => {
     if (result.isConfirmed) {
       processing.value = true;
-      router.delete(`/roles/${id}`, {
+      router.delete(`${baseUrl}/roles/${id}`, {
         onSuccess: () => {
           Swal.fire('Eliminado', 'Rol eliminado correctamente.', 'success');
         },
@@ -50,7 +51,7 @@ const eliminar = (id) => {
               Lista de Roles
             </h1>
             <a
-              href="/roles/create"
+             :href="`${baseUrl}/roles/create`"  
               class="mt-4 sm:mt-0 px-6 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors font-medium shadow-md"
               style="font-size: inherit;"
             >
@@ -99,7 +100,7 @@ const eliminar = (id) => {
                   <td class="px-4 py-3 border">
                     <div class="flex flex-wrap items-center gap-3">
                       <a
-                        :href="`/roles/${rol.id}/edit`"
+                        :href="`${baseUrl}/roles/${rol.id}/edit`"
                         class="inline-flex items-center px-4 py-2 text-xs font-medium bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-colors"
                         style="font-size: calc(0.875em);"
                       >

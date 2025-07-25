@@ -4,6 +4,7 @@ import { Head, router } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import Swal from 'sweetalert2';
 
+const baseUrl = 'http://mail.tecnoweb.org.bo/inf513/grupo20sa/proyecto2/renta_car_web2/public';
 const props = defineProps({
     permissions: Array,
 });
@@ -12,7 +13,7 @@ const name = ref('');
 const selectedPermissions = ref([]);
 
 const enviar = () => {
-    router.post('/roles', {
+    router.post('${baseUrl}/roles', {
         name: name.value,
         permissions: selectedPermissions.value,
     }, {
@@ -21,9 +22,7 @@ const enviar = () => {
                 title: '¡Rol creado!',
                 text: 'El rol fue registrado correctamente.',
                 icon: 'success',
-            }).then(() => {
-                router.visit('/roles');
-            });
+            }). window.location.href = `${baseUrl}/roles`;
         },
         onError: (errors) => {
             Swal.fire({
